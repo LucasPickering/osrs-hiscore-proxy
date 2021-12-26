@@ -1,0 +1,20 @@
+[package]
+authors = ["Lucas Pickering <lucas@lucaspickering.me>"]
+edition = "2021"
+keywords = ["osrs", "runescape"]
+license = "MIT"
+name = "osrs-hiscore-proxy"
+repository = "https://github.com/LucasPickering/osrs-hiscore-proxy"
+version = "1.0.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+async-trait = "^0.1.52"
+csv = "^1.1.6"
+log = "0.4.14"
+reqwest = {version = "^0.11.8", default-features = false, features = ["default-tls"]}
+rocket = {version = "0.5.0-rc.1", default-features = false, features = ["json"]}
+serde = {version = "^1.0.132", features = ["derive"]}
+thiserror = "1.0.30"
+tokio = {version = "^1.15.0", default-features = false, features = ["macros", "rt"]}
