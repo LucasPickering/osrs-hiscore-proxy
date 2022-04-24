@@ -50,6 +50,7 @@ const MINIGAMES: &[&str] = &[
     "Clue Scroll (Master)",
     "LMS - Rank",
     "Soul Wars Zeal",
+    "Rifts closed",
     "Abyssal Sire",
     "Alchemical Hydra",
     "Barrows Chests",
