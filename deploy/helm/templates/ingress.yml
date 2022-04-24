@@ -1,0 +1,21 @@
+# A single ingress rule to route all traffic on the domain to the API pod
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-api
+  namespace: "{{ .Release.Namespace }}"
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+spec:
+  rules:
+    - host: "{{ .Values.hostname }}"
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: hiscore-proxy
+                port:
+                  number: 8000

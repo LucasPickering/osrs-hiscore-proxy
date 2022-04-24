@@ -194,4 +194,13 @@ The only tool you need to install is [rustup](https://rustup.rs/). After that, s
 
 You'll need to manually stop and restart the server after making changes. To watch for changes, install [cargo-watch](https://github.com/watchexec/cargo-watch) and start with `cargo watch -x run`.
 
-For production, the API is built into a docker image, published, and deployed via [Keskne](https://github.com/LucasPickering/keskne).
+## Deployment
+
+For production, the API is built into a docker image, published, and deployed via Helm. Kubernetes cluster is provided by [Keskne](https://github.com/LucasPickering/keskne).
+
+To deploy/re-deploy:
+
+```sh
+cd deploy
+./scripts/deploy.sh
+```

@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hiscore-proxy
+  namespace: "{{ .Release.Namespace }}"
+  labels:
+    app: hiscore-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hiscore-proxy
+  template:
+    metadata:
+      labels:
+        app: hiscore-proxy
+    spec:
+      containers:
+        - name: hiscore-proxy
+          image: "ghcr.io/lucaspickering/osrs-hiscore-proxy:{{ .Values.versionSha }}"
+          resources:
+            requests:
+              cpu: 5m
+              memory: 10Mi
+          env:
+            - name: ROCKET_ADDRESS
+              value: "0.0.0.0"
+            - name: RUST_BACKTRACE
+              value: "1"
+            - name: RUST_LOG
+              value: "info"
+          ports:
+            - containerPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hiscore-proxy
+  namespace: "{{ .Release.Namespace }}"
+  labels:
+    app: hiscore-proxy
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8000
+  selector:
+    app: hiscore-proxy

@@ -76,6 +76,10 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           file: ./Dockerfile
-          tags: ghcr.io/lucaspickering/osrs-hiscore-proxy:latest
+          tags: |
+            ghcr.io/lucaspickering/osrs-hiscore-proxy:latest
+            ghcr.io/lucaspickering/osrs-hiscore-proxy:${{ github.sha }}
           pull: true
           push: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
