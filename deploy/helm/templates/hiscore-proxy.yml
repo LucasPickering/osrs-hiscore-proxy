@@ -21,7 +21,7 @@ spec:
           resources:
             requests:
               cpu: 5m
-              memory: 10Mi
+              memory: 5Mi
           env:
             - name: ROCKET_ADDRESS
               value: "0.0.0.0"
