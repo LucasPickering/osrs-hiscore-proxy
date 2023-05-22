@@ -41,6 +41,8 @@ const SKILLS: &[&str] = &[
 /// The list of minigames tracked in the hiscore. Order here corresponds to the
 /// order in the response.
 const MINIGAMES: &[&str] = &[
+    "Bounty Hunter - Hunter",
+    "Bounty Hunter - Rogue",
     "Clue Scroll (All)",
     "Clue Scroll (Beginner)",
     "Clue Scroll (Easy)",
@@ -49,13 +51,16 @@ const MINIGAMES: &[&str] = &[
     "Clue Scroll (Elite)",
     "Clue Scroll (Master)",
     "LMS - Rank",
+    "PvP Arena - Rank",
     "Soul Wars Zeal",
     "Rifts closed",
     "Abyssal Sire",
     "Alchemical Hydra",
+    "Artio",
     "Barrows Chests",
     "Bryophyta",
     "Callisto",
+    "Calvar'ion",
     "Cerberus",
     "Chambers of Xeric",
     "Chambers of Xeric: Challenge Mode",
@@ -82,15 +87,19 @@ const MINIGAMES: &[&str] = &[
     "Nightmare",
     "Phosani's Nightmare",
     "Obor",
+    "Phantom Muspah",
     "Sarachnis",
     "Scorpia",
     "Skotizo",
+    "Spindel",
     "Tempoross",
     "The Guantlet",
     "The Corrupted Guantlet",
     "Theatre of Blood",
     "Theatre of Blood: Hard Mode",
     "Thermonuclear Smoke Devil",
+    "Tombs of Amascut",
+    "Tombs of Amascut: Expert Mode",
     "TzKal-Zuk",
     "TzTok-Jad",
     "Venenatis",
@@ -101,10 +110,10 @@ const MINIGAMES: &[&str] = &[
     "Zulrah",
 ];
 
-/// There seem to be 3 rows in the hiscore response between skills and minigames
-/// that are hardcoded to `-1`, which I'm assuming are meant as a delimiter
-/// between the two.
-const DELIMITER_LEN: usize = 3;
+/// There seems to be 1 row in the hiscore response between skills and
+/// minigames that are hardcoded to `-1`, which I'm assuming is meant as a
+/// delimiter between the two.
+const DELIMITER_LEN: usize = 1;
 
 /// Helpful User-Agent makes everyone happy
 const USER_AGENT: &str =
@@ -235,7 +244,7 @@ mod tests {
     /// to the `MINIGAMES` constant
     #[tokio::test]
     async fn test_hiscore_response_parse() {
-        let player_name = "Hey Jase"; // Sorry buddy you're the guinea pig
+        let player_name = "b0aty"; // Sorry buddy you're the guinea pig
 
         // Load the raw CSV data, and the parsed data via the logic under test
         let raw_rows = load_hiscore_rows(player_name).await.unwrap();
