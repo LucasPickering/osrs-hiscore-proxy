@@ -43,6 +43,8 @@ const SKILLS: &[&str] = &[
 const MINIGAMES: &[&str] = &[
     "Bounty Hunter - Hunter",
     "Bounty Hunter - Rogue",
+    "Bounty Hunter - Hunter (Legacy)",
+    "Bounty Hunter - Rogue (Legacy)",
     "Clue Scroll (All)",
     "Clue Scroll (Beginner)",
     "Clue Scroll (Easy)",
