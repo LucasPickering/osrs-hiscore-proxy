@@ -202,5 +202,5 @@ To deploy/re-deploy:
 
 ```sh
 cd deploy
-./scripts/deploy.sh
+./deploy.sh
 ```

@@ -7,7 +7,7 @@ NAMESPACE=osrs-hiscore-proxy
 # Grab the latest *published* master
 VERSION=$(git rev-parse origin/master)
 
-if $(helm list | grep -q $CHART_NAME); then
+if $(helm list --namespace $NAMESPACE | grep -q $CHART_NAME); then
     SUBCOMMAND=upgrade
 else
     SUBCOMMAND=install
